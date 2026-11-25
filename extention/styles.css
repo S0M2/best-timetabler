@@ -1,0 +1,456 @@
+/* ── Base & Reset ──────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-main:   #0a0d18;
+  --bg-card:   #121626;
+  --bg-card-hover: #191f34;
+  --bg-input:  #161b2e;
+  --border:    rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(99, 102, 241, 0.45);
+  --text:      #f1f5f9;
+  --text-muted:#8d98af;
+  --accent:    #6366f1;
+  --accent-glow: rgba(99, 102, 241, 0.3);
+  --green:     #10b981;
+  --radius:    9px;
+  --radius-sm: 6px;
+}
+
+body {
+  width: 360px;
+  max-height: 540px;
+  background: var(--bg-main);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Header ────────────────────────────────────── */
+.hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.hdr-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.hdr-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.hdr-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+}
+
+.hdr-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.hdr-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: #fff;
+  font-size: 13px;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-focus);
+  transform: scale(1.05);
+}
+
+/* ── Toggle Switch ─────────────────────────────── */
+.toggle {
+  cursor: pointer;
+}
+
+.toggle input {
+  display: none;
+}
+
+.track {
+  display: block;
+  width: 38px;
+  height: 22px;
+  background: #1e2438;
+  border-radius: 12px;
+  padding: 2px;
+  transition: background 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--border);
+}
+
+.toggle input:checked + .track {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+  border-color: var(--accent);
+}
+
+.thumb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.toggle input:checked + .track .thumb {
+  transform: translateX(16px);
+}
+
+/* ── BAC Navigation Tabs ───────────────────────── */
+.bac-nav {
+  display: flex;
+  padding: 8px 12px;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.bac-btn {
+  flex: 1;
+  padding: 6px 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.bac-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.bac-btn.active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+/* ── Controls Bar (Search + Quick Actions) ──────── */
+.controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.search-box {
+  width: 100%;
+  padding: 7px 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box:focus {
+  border-color: var(--border-focus);
+}
+
+.search-box::placeholder {
+  color: var(--text-muted);
+}
+
+.quick-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-action {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-action:hover {
+  color: var(--text);
+  border-color: var(--border-focus);
+}
+
+.btn-palette {
+  color: #c4b5fd;
+  background: rgba(196, 181, 253, 0.1);
+  border-color: rgba(196, 181, 253, 0.25);
+}
+
+.btn-palette:hover {
+  background: rgba(196, 181, 253, 0.25);
+  color: #fff;
+  border-color: #c4b5fd;
+}
+
+/* ── Course List ───────────────────────────────── */
+.course-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.course-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.course-list::-webkit-scrollbar-thumb {
+  background: #1f263e;
+  border-radius: 4px;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: background 0.15s, border-color 0.15s, opacity 0.2s;
+}
+
+.course-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.course-item.disabled {
+  opacity: 0.42;
+}
+
+/* Checkbox */
+.course-cb {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Interactive Swatch & Hidden Native Color Picker */
+.swatch-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.swatch-input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  border: none;
+  padding: 0;
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s, box-shadow 0.15s;
+  pointer-events: none;
+}
+
+.swatch-wrap:hover .swatch {
+  transform: scale(1.18);
+  box-shadow: 0 0 7px var(--accent);
+  border-color: #fff;
+}
+
+/* Name and Badge */
+.course-name {
+  flex: 1;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.course-moodle-link {
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+  line-height: 1;
+}
+
+.course-moodle-link:hover {
+  transform: scale(1.25);
+}
+
+.course-badge {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.badge-bac-1 {
+  background: rgba(147, 197, 253, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+}
+
+.badge-bac-2 {
+  background: rgba(196, 181, 253, 0.2);
+  color: #c4b5fd;
+  border: 1px solid rgba(196, 181, 253, 0.35);
+}
+
+.badge-bac-3 {
+  background: rgba(253, 186, 116, 0.2);
+  color: #fdba74;
+  border: 1px solid rgba(253, 186, 116, 0.35);
+}
+
+.badge-bac-other {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+/* Bouton supprimer le cours */
+.course-del-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, background-color 0.15s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.course-item:hover .course-del-btn {
+  opacity: 0.6;
+}
+
+.course-del-btn:hover {
+  opacity: 1 !important;
+  color: #f87171 !important;
+  background-color: rgba(239, 68, 68, 0.18) !important;
+}
+
+/* Empty message */
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 11px;
+  padding: 30px 10px;
+  font-style: italic;
+}
+
+/* ── Footer ────────────────────────────────────── */
+.ftr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid var(--border);
+  font-size: 10px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.ftr-apple-btn {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.ftr-apple-btn:hover {
+  background: rgba(59, 130, 246, 0.35);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+.ftr-status {
+  color: var(--green);
+  font-weight: 600;
+  opacity: 0.85;
+}

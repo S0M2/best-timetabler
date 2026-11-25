@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Timetabler</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hdr">
+    <div class="hdr-left">
+      <img src="icons/icon48.png" class="hdr-logo" alt="">
+      <div>
+        <div class="hdr-title">Best Timetabler</div>
+        <div class="hdr-sub">Portail &amp; Moodle</div>
+      </div>
+    <div class="hdr-right">
+      <button class="theme-toggle-btn" id="themeToggle" title="Basculer entre Thème Clair et Thème Sombre"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
+      <label class="toggle" title="Activer / Désactiver l'extension">
+        <input type="checkbox" id="masterToggle" checked>
+        <span class="track"><span class="thumb"></span></span>
+      </label>
+    </div>
+  </header>
+
+  <div class="bac-nav">
+    <button class="bac-btn active" data-bac="all">Tous</button>
+    <button class="bac-btn" data-bac="1">BAC 1</button>
+    <button class="bac-btn" data-bac="2">BAC 2</button>
+    <button class="bac-btn" data-bac="3">BAC 3</button>
+  </div>
+
+  <div class="controls-bar">
+    <input type="text" id="searchInput" class="search-box" placeholder="Rechercher un cours…" spellcheck="false">
+    <div class="quick-btns">
+      <button class="btn-action" id="btnSelectAll" title="Tout cocher">Tout</button>
+      <button class="btn-action" id="btnDeselectAll" title="Tout décocher">Aucun</button>
+      <button class="btn-action btn-palette" id="btnAutoColors" title="Attribuer des couleurs pastel à chaque cours">Pastel</button>
+    </div>
+  </div>
+
+  <div id="courseList" class="course-list">
+    <div class="empty-state">Chargement des cours…</div>
+  </div>
+
+  <footer class="ftr">
+    <span id="courseCount" class="ftr-count">0 cours</span>
+    <button type="button" id="btnAppleCal" class="ftr-apple-btn" title="Connecter ou s'abonner avec Apple Calendar"> Calendrier</button>
+    <span id="saveStatus" class="ftr-status">Sauvegardé</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

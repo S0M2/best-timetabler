@@ -1,0 +1,42 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archives & Build Artifacts
+dist/
+*.zip
+*.xpi
+*.tar.gz
+
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Server Local Runtime, Secrets & Personal Data
+server/*.pem
+server/*.key
+server/*.crt
+server/*.cnf
+server/*.log
+server/events.json
+server/calendar.ics
+
+# General Logs & Temp Files
+*.log
+*.tmp
+*.swp
+*~
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
